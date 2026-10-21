@@ -1,0 +1,72 @@
+{
+    "id": "com.github.adriadam10.piggy",
+    "name": "Piggy",
+    "description": "An 8-bit team pet: a shared piggy that walks in the corner of Mattermost and needs to be fed, petted and played with, or it dies.",
+    "homepage_url": "https://github.com/adriadam10/mattermost-plugin-piggy",
+    "support_url": "https://github.com/adriadam10/mattermost-plugin-piggy/issues",
+    "version": "0.2.1",
+    "min_server_version": "11.11.0",
+    "server": {
+        "executables": {
+            "linux-amd64": "server/dist/plugin-linux-amd64",
+            "linux-arm64": "server/dist/plugin-linux-arm64"
+        }
+    },
+    "webapp": {
+        "bundle_path": "webapp/dist/main.js"
+    },
+    "settings_schema": {
+        "header": "One piggy shared by the whole server. Its needs only drop during working hours, Monday to Friday.",
+        "settings": [
+            {
+                "key": "PetName",
+                "display_name": "Name",
+                "type": "text",
+                "default": "Bacon",
+                "help_text": "Every new piggy after a death gets this name plus its generation (Bacon II, Bacon III...)."
+            },
+            {
+                "key": "CommandTrigger",
+                "display_name": "Slash command",
+                "type": "text",
+                "default": "piggy",
+                "help_text": "Trigger of the slash command, without the slash."
+            },
+            {
+                "key": "DaysToDeath",
+                "display_name": "Working days to death",
+                "type": "number",
+                "default": 3,
+                "help_text": "Working days without anybody feeding or playing with the piggy until it dies (1 to 30). It gets hungry after a third of that and sick a bit later."
+            },
+            {
+                "key": "WorkdayStart",
+                "display_name": "Workday start (hour)",
+                "type": "number",
+                "default": 8,
+                "help_text": "Hour (0-23) when the piggy wakes up and its needs start to drop."
+            },
+            {
+                "key": "WorkdayEnd",
+                "display_name": "Workday end (hour)",
+                "type": "number",
+                "default": 18,
+                "help_text": "Hour (1-24) when the piggy goes to bed. Outside working hours and on weekends nothing drops."
+            },
+            {
+                "key": "TimeZone",
+                "display_name": "Time zone",
+                "type": "text",
+                "default": "UTC",
+                "help_text": "IANA time zone of the working hours, e.g. Europe/Madrid."
+            },
+            {
+                "key": "AnnouncementChannel",
+                "display_name": "Announcement channel",
+                "type": "text",
+                "default": "",
+                "help_text": "team-name/channel-name where the piggy says it is sick or has died. Empty: no announcements."
+            }
+        ]
+    }
+}
