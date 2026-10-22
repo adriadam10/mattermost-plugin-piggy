@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {doAction} from './api.js';
+import {doAction, setShown} from './api.js';
 import {placement} from './placement.js';
 import {age, ago} from './i18n.js';
 import {setPet} from './store.js';
@@ -163,6 +163,10 @@ export default function Panel({pet, error, t, locale, onClose, anchor}) {
                     <span>{`${t('bestFriend')}: ${pet.best_friend ? `@${pet.best_friend}` : t('nobody')}`}</span>
                     {!dead && <span>{`${t('age')}: ${age(pet.born_at, Date.now(), locale)}`}</span>}
                     <span>{t('tip', {trigger: pet.trigger})}</span>
+                    <button
+                        className='piggy-hide'
+                        onClick={() => setShown(false).catch(() => setNotice(t('loadError')))}
+                    >{t('hideMe', {trigger: pet.trigger})}</button>
                 </div>
             )}
         </div>

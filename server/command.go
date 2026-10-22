@@ -38,6 +38,11 @@ func (p *Plugin) ExecuteCommand(_ *plugin.Context, args *model.CommandArgs) (*mo
 	switch sub {
 	case "help":
 		return ephemeral(t("help", s.trigger)), nil
+	case "hide", "show":
+		if err := p.setShown(args.UserId, sub == "show"); err != nil {
+			return nil, model.NewAppError("ExecuteCommand", "piggy.visibility", nil, err.Error(), 500)
+		}
+		return ephemeral(t(sub+"n", petName(s.name, 1), s.trigger)), nil
 	case "status":
 		_, after, err := p.update(func(*pet, time.Time) error { return nil })
 		if err != nil {

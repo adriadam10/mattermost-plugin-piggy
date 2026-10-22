@@ -4,7 +4,7 @@
     "description": "An 8-bit team pet: a shared piggy that walks in the corner of Mattermost and needs to be fed, petted and played with, or it dies.",
     "homepage_url": "https://github.com/adriadam10/mattermost-plugin-piggy",
     "support_url": "https://github.com/adriadam10/mattermost-plugin-piggy/issues",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "min_server_version": "11.11.0",
     "server": {
         "executables": {

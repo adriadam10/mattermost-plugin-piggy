@@ -9,8 +9,10 @@ import {emitReaction, handleStateEvent, setPet} from './store.js';
 import {STYLES} from './styles.js';
 import Widget from './widget.jsx';
 
-// The user setting registered below; Mattermost stores it as a preference.
+// The user setting registered below; Mattermost stores it as a preference whose
+// category is the plugin id cut to 32 characters (its getPluginPreferenceKey).
 const SHOW_SETTING = 'show_piggy';
+const SHOW_KEY = `${`pp_${manifest.id}`.slice(0, 32)}--${SHOW_SETTING}`;
 
 function currentLocale(state) {
     const {currentUserId, profiles} = state.entities.users;
@@ -27,7 +29,7 @@ class Plugin {
         document.head.appendChild(this.style);
 
         registry.registerRootComponent(() => {
-            const shown = useSelector((state) => state.entities.preferences.myPreferences[`pp_${manifest.id}--${SHOW_SETTING}`]?.value) !== 'hide';
+            const shown = useSelector((state) => state.entities.preferences.myPreferences[SHOW_KEY]?.value) !== 'hide';
             return shown ? (
                 <Widget
                     t={t}

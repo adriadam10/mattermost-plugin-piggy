@@ -68,3 +68,10 @@ func TestAvatar(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestPrefCategoryMatchesWebapp(t *testing.T) {
+	// The webapp setting lives in Mattermost's getPluginPreferenceKey: `pp_${id}`.slice(0, 32).
+	if got := prefCategory(); got != "pp_com.github.adriadam10.piggy" {
+		t.Errorf("category %q", got)
+	}
+}

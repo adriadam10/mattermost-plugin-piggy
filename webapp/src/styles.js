@@ -167,6 +167,17 @@ export const STYLES = `
     font-size: 10px;
     color: rgba(var(--center-channel-color-rgb), 0.64);
 }
+.piggy-hide {
+    margin-top: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    text-decoration: underline dotted;
+    cursor: pointer;
+}
 /* The phone layout has no room to spare; the slash command still works. */
 @media (max-width: 768px) {
     .piggy-widget { display: none; }

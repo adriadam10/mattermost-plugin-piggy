@@ -25,3 +25,5 @@ async function request(method, path, body) {
 export const fetchPet = () => request('GET', 'pet');
 // Resolves to {pet, refused?}: refused is why the piggy did not want to (full, asleep...).
 export const doAction = (action) => request('POST', 'action', {action});
+// Saves the same preference as Settings → Piggy; Mattermost then updates every open window.
+export const setShown = (show) => request('POST', 'visibility', {show});

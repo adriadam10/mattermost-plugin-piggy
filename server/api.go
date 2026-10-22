@@ -11,6 +11,7 @@ func (p *Plugin) newRouter() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /api/v1/pet", p.handlePet)
 	mux.HandleFunc("POST /api/v1/action", p.handleAction)
+	mux.HandleFunc("POST /api/v1/visibility", p.handleVisibility)
 	return requireUser(mux)
 }
 

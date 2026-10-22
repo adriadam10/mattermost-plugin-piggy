@@ -4,7 +4,8 @@ An 8-bit team pet for Mattermost: one piggy, shared by the whole server, that wa
 left corner of the webapp. Everybody sees the same piggy, and if nobody looks after it, it dies.
 
 - **Click the piggy** to open its panel: food, joy, energy and health bars, and buttons to feed it,
-  pet it, play with it or send it to bed. Drag it to move it (the position is remembered per browser).
+  pet it, play with it or send it to bed. It walks round all four edges of the window, runs when
+  happy, comes to sniff the mouse when it rests near an edge and looks up when a message arrives.
 - **Everybody sees every action live**: when someone feeds it, the piggy eats on every open screen.
 - **`/piggy`** in any channel shows its status; `/piggy feed|pet|play|sleep` does the same as the
   buttons and the piggy's bot says it in the channel. `/piggy adopt` brings a new one after a death.
@@ -13,8 +14,9 @@ left corner of the webapp. Everybody sees the same piggy, and if nobody looks af
 - **It can die**: after *Working days to death* (default 3) without anybody feeding or playing with
   it. It gets hungry after a third of that, then sick, and an optional announcement channel is told
   when it gets sick and when it dies. The next piggy is *Bacon II*, *Bacon III*...
-- Each user can hide it in **Settings → Piggy**. It is hidden on phone-sized screens; the slash
-  command still works there and in the mobile apps.
+- **Anybody who does not want it can hide it, just for themselves**: the link at the bottom of its
+  panel, `/piggy hide` (and `/piggy show` to bring it back) or **Settings → Piggy**. It is also
+  hidden on phone-sized screens; the slash command still works there and in the mobile apps.
 - English and Spanish, following the user's language.
 
 ## How it works
@@ -41,7 +43,7 @@ Requires Mattermost 11.11 or later. Download the `.tar.gz` of the latest release
 **System Console → Plugins → Plugin Management**, or:
 
 ```sh
-mmctl plugin install-url https://github.com/adriadam10/mattermost-plugin-piggy/releases/download/v0.2.1/com.github.adriadam10.piggy-0.2.1.tar.gz
+mmctl plugin install-url https://github.com/adriadam10/mattermost-plugin-piggy/releases/download/v0.3.0/com.github.adriadam10.piggy-0.3.0.tar.gz
 mmctl plugin enable com.github.adriadam10.piggy
 ```
 
